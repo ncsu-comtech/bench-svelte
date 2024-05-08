@@ -69,11 +69,11 @@
         --><button tabindex="0" title="pagination.firstPage" aria-label="pagination.firstPage" on:click={() => setPage(1)}>1</button><!--
         -->{/if}<!--
 
-        -->{#if currentPage-3 > 1}<!--
+        -->{#if currentPage-3 >= 1}<!--
         --><button tabindex="-1" class="spread">...</button><!--
         -->{/if}<!--
 
-        -->{#if currentPage-2 > 1 && currentPage+2 >= numPages}<!--
+        -->{#if currentPage-2 > 1 && !(currentPage+3 <= numPages) && currentPage+2 != numPages && currentPage+1 != numPages && currentPage != numPages}<!--
         --><button tabindex="0" class="" title="Page {currentPage-2}" aria-label="Page {currentPage-2}" on:click={() => setPage(currentPage-2)}>{currentPage-2}</button><!--
         -->{/if}<!--
 
@@ -87,11 +87,11 @@
         --><button tabindex="0" class="" title="Page {currentPage+1}" aria-label="Page {currentPage+1}" on:click={() => setPage(currentPage+1)}>{currentPage+1}</button><!--
         -->{/if}<!--
 
-        -->{#if currentPage+2 < numPages && currentPage-2 <= 1}<!--
+        -->{#if currentPage+2 < numPages && !(currentPage-3 >= 1) && currentPage-2 != 1 && currentPage-1 != 1 }<!--
         --><button tabindex="0" class="" title="Page {currentPage+2}" aria-label="Page {currentPage+2}" on:click={() => setPage(currentPage+2)}>{currentPage+2}</button><!--
         -->{/if}<!--
 
-        -->{#if currentPage+3 < numPages}<!--
+        -->{#if currentPage+3 <= numPages}<!--
         --><button tabindex="-1" class={classPagerSpread}>...</button><!--
         -->{/if}<!--
 
@@ -111,6 +111,7 @@
     .bench-pager {
         float: right;
         padding: 1em;
+        white-space: nowrap;
     }
 
     .bench-pager button:first-child {
