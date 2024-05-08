@@ -11,8 +11,6 @@
     let numPages;
     let currentPage = 1;
     let determinedTotal;
-    let shownStart = 0;
-    let shownEnd = 0;
 
     // initial setup of values
     const setup = () => {
@@ -29,13 +27,6 @@
             currentPage = offset + 1;
         } else {
             currentPage = Math.ceil(offset / limit) + 1;
-        }
-        // determin summary values
-        shownStart = offset;
-        if (offset + limit > determinedTotal) {
-            shownEnd = determinedTotal;
-        } else {
-            shownEnd = offset + limit;
         }
     }
 
@@ -87,8 +78,8 @@
         --><button tabindex="0" class="" title="Page {currentPage+1}" aria-label="Page {currentPage+1}" on:click={() => setPage(currentPage+1)}>{currentPage+1}</button><!--
         -->{/if}<!--
 
-        -->{#if currentPage+2 < numPages && !(currentPage-3 >= 1) && currentPage-2 != 1 && currentPage-1 != 1 }<!--
-        --><button tabindex="0" class="" title="Page {currentPage+2}" aria-label="Page {currentPage+2}" on:click={() => setPage(currentPage+2)}>{currentPage+2}</button><!--
+        -->{#if currentPage+2 < numPages && !(currentPage-3 >= 1) && currentPage-2 != 1 && currentPage-1 != 1 && currentPage != 1 }<!--
+        --><button tabindex="0" class="" title="Page {currentPage+2}" aria-label="Page {currentPage+2}" on:click={() => setPage(currentPage+2)}>f{currentPage+2}</button><!--
         -->{/if}<!--
 
         -->{#if currentPage+3 <= numPages}<!--
