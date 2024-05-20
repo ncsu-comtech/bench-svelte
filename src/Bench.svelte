@@ -5,22 +5,21 @@
 
     export let data = [];
     export let columns = [];
-    export let limit, offset, order, dir, search;
+    export let limit, offset, order, dir, search = undefined;
 
     export let classBenchContainer = "bench-container";
-    export let classTableWrapper;
-    export let classTable;
-    export let classTableBody;
-    export let classTableHead;
-    export let classTableData;
-    export let classTableHeader;
-    export let classTableRow;
-    export let classSearch;
-    export let classPages;
-    export let classPager;
-    export let classSummary;
-    export let classPagerCurrent;
-    export let classPagerSpread;
+    export let classTableWrapper = undefined;
+    export let classTable = undefined;
+    export let classTableBody = undefined;
+    export let classTableHead = undefined;
+    export let classTableData = undefined;
+    export let classTableHeader = undefined;
+    export let classTableRow = undefined;
+    export let classSearch = undefined;
+    export let classPager = undefined;
+    export let classSummary = undefined;
+    export let classPagerCurrent = undefined;
+    export let classPagerSpread = undefined;
 
     // reset offset on search
     const resetOffset = () => {
@@ -56,7 +55,6 @@
         bind:offset={offset}
         total={data.recordsTotal}
         filteredTotal={data.recordsFiltered}
-        classPages={classPages}
         classPager={classPager}
         classSummary={classSummary}
         classPagerCurrent={classPagerCurrent}
