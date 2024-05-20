@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.ncsu.edu/ncstate-comtech/bench-svelte"
+    "url": "https://github.com/haught/bench-svelte"
   },
   "keywords": [
     "table",
@@ -27,9 +27,9 @@
   "author": "Matt Haught",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.ncsu.edu/ncstate-comtech/bench-svelte/issues"
+    "url": "https://github.com/haught/bench-svelte/issues"
   },
-  "homepage": "https://github.ncsu.edu/ncstate-comtech/bench-svelte#readme",
+  "homepage": "https://github.com/haught/bench-svelte#readme",
   "exports": {
     ".": {
       "svelte": "./src/index.js"
