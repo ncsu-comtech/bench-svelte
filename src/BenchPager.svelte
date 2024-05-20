@@ -61,7 +61,7 @@
         -->{/if}<!--
 
         -->{#if currentPage-3 >= 1}<!--
-        --><button tabindex="-1" class="spread">...</button><!--
+        --><button tabindex="-1" class={classPagerSpread}>...</button><!--
         -->{/if}<!--
 
         -->{#if currentPage-2 > 1 && !(currentPage+3 <= numPages) && currentPage+2 != numPages && currentPage+1 != numPages && currentPage != numPages}<!--
