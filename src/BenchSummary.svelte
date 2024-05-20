@@ -21,16 +21,16 @@
     $: total, filteredTotal, determinedTotal, limit, offset, currentPage, numPages, setup();
 </script>
 
-<pager-summary>
+<bench-pager-summary>
     <div role="status" aria-live="polite" class={classSummary} title="Page {currentPage} of {numPages}">
         Showing <b>{shownStart}</b> to <b>{shownEnd}</b> of <b>{determinedTotal}</b> entries {#if determinedTotal < total}(filtered from {total} total entries){/if}
     </div>
-</pager-summary>
+</bench-pager-summary>
 
 <style>
 
-    pager-summary {
-        grid-area: pager-summary;
+    bench-pager-summary {
+        grid-area: bench-pager-summary;
     }
 
     .bench-summary {

@@ -30,7 +30,7 @@
 
 </script>
 
-<bench>
+<bench-table>
     {#if data.results}
     <div class={classTableWrapper}>
         <table class={classTable}>
@@ -70,11 +70,11 @@
         </table>
     </div>
     {/if}
-</bench>
+</bench-table>
 
 <style>
-    bench {
-        grid-area: bench;
+    bench-table {
+        grid-area: bench-table;
     }
 
     .bench-wrapper {

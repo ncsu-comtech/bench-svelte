@@ -52,7 +52,7 @@
     classSummary={classSummary}
 />
 
-<pager>
+<bench-pager>
     <div class={classPager}>
         <button tabindex="0" title="Previous" aria-label="Previous" class="" on:click={() => setPage(currentPage-1)}>Previous</button><!--
 
@@ -92,11 +92,11 @@
 
         --><button tabindex="0"  title="Next" aria-label="Next" class="" on:click={() => setPage(currentPage+1)}>Next</button>
     </div>
-</pager>
+</bench-pager>
 
 <style>
-    pager {
-        grid-area: pager;
+    bench-pager {
+        grid-area: bench-pager;
     }
 
     .bench-pager {

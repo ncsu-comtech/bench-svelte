@@ -5,14 +5,14 @@
 
 </script>
 
-<search>
+<bench-search>
     <div class="bench-search-container"><input type="search" placeholder="Type a keyword..." aria-label="Type a keyword..." class={classSearch} bind:value={searchTerm} on:input></div>
-</search>
+</bench-search>
 
 <style>
 
-    search {
-        grid-area: search;
+    bench-search {
+        grid-area: bench-search;
     }
 
     .bench-search {

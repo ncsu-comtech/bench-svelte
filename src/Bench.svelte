@@ -71,9 +71,9 @@
         display: grid;
         width: 100%;
         grid-template-areas:
-            "search search"
-            "bench  bench"
-            "pager-summary  pager";
+            "bench-search bench-search"
+            "bench-table  bench-table"
+            "bench-pager-summary  bench-pager";
         grid-template-rows: 3em 1fr 3em;
         grid-template-columns: 50% 50%;
     }
