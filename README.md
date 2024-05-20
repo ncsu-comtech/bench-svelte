@@ -1,0 +1,133 @@
+# Bench-Svelte
+
+A quick and dirty DataTables ajax alternative without jQuery using Svelte.
+
+This project will only support dynamic data for pages and supports:
+- Sorting columns
+- Pagination
+- Searching
+
+## Install
+
+```sh
+npm install @haught/bench-svelte
+```
+
+# Usage
+
+Bench-Svelte requires dynamic data from your backend, this allows efficient displaying of large data sets.
+
+## Getting data
+To use Bench-Svelte we need to grab data remotely and it is up to you how uou get such data. Here is an example where you use your own getTable function to go out and get the data.
+
+```javascript
+    // define a few variables / defaults
+    let url = 'https://example.com/api/v1/'
+    let tableData = [];
+    let tableOffset = 0;
+    let tableLimit = 30;
+    let tableSearch = "";
+    let tableOrder = 'created_at';
+    let tableDir = 'desc';
+
+    // getData will run your getTable function to grab the data
+    const getData = async () => {
+        tableData = await getTable({
+            url: url,
+            limit: tableLimit,
+            offset: tableOffset,
+            order: tableOrder,
+            dir: tableDir,
+            search: tableSearch});
+    };
+
+    // this svelte label will getData if any of these vars change
+    $: tableLimit, tableOffset, tableOrder, tableDir, tableSearch, getData();
+
+```
+
+Below is an example of a getTable function which builds a query string in the format `?limit=30&offest=0&order=created_at&dir=desc&search=` for a backend similar to what is used for DataTables ajax.
+
+```javascript
+const getTable = async function({url, limit, offset, order, dir, search}) {
+    try {
+        const paramString = buildQueryParams({
+            limit: limit ?? "",
+            offset: offset ?? "",
+            order: order ?? "",
+            dir: dir ?? "",
+            search: search ?? "",
+        });
+        if (paramString) {
+            url = url + "?" + paramString;
+        }
+        const response = await axios.get(url);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+}
+```
+The data returned for this example would be in the format:
+```json
+[
+    {"id":1,"name":"Bob","title":"Analyst","status":"At Home"},
+    {"id":2,"name":"Olivia","title":"Manager","status":"On Site"},
+    {"id":3,"name":"Sandra","title":"CTO","status":"On Site"}
+]
+```
+
+## Configure
+To configure the Benc-Svelte table, we need to define what columns are to be used from the remote data and various attributes. Here is an example:
+
+```javascript
+    let tableColumns = [
+        { id: 'id', name: 'ID', hidden: true },
+        { id: 'created_at', name: 'Created at', formatter: cell => { return moment(cell).format('MMM Do, H:mm') }},
+        { id: 'name', name: 'Name' },
+        { id: 'title', name: 'Title' },
+        { id: 'status', name: 'Status', sort: false }
+    ];
+```
+
+The key **id** needs to match the column key from the data. <br>
+The key **name** will be what is displayed in the table header for the column. <br>
+The key **hidden** is an optional boolean to hide a specific column from display using css (default: false). <br>
+The key **sort** is an optional boolean to enable/disable sorting (default: true) <br>
+The key **formatter** is an optional function to pass the cell data through for formatting
+
+## Display
+To include the table, simply include the Bench component
+```javascript
+<Bench
+    data={tableData}
+    columns={tableColumns}
+    bind:order={tableOrder}
+    bind:dir={tableDir}
+    bind:offset={tableOffset}
+    bind:limit={tableLimit}
+    bind:search={tableSearch}
+/>
+```
+
+# Styling
+
+The default base css class used is **.bench-container** and can be modified using svelte global css, for example:
+```css
+<style>
+    :global(.bench-container search) {
+        font-size: 0.8em;
+    }
+</style>
+```
+
+The **.bench-container** class is using css grid for layout and is made up of four areas: **bench-search**, **bench-table**,  **bench-pager-summary**, and **bench-pager** that can be use to adjust the layout somewhat.
+
+You can also use your own classes by changing the **classBenchContainer** property for Bench. For example, if you had your own table styling using *mybench-container* :
+```javascript
+<Bench
+    ...
+    classBenchContainer="mybench-container"
+/>
+```
