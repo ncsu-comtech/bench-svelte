@@ -2,10 +2,13 @@
     import BenchPager from "./BenchPager.svelte";
     import BenchSearch from "./BenchSearch.svelte";
     import BenchTable from "./BenchTable.svelte";
+    import BenchExport from "./BenchExport.svelte";
 
     export let data = [];
     export let columns = [];
     export let limit, offset, order, dir, search = undefined;
+
+    export let onExport = undefined;
 
     export let classBenchContainer = "bench-container";
     export let classTableWrapper = undefined;
@@ -20,6 +23,7 @@
     export let classSummary = undefined;
     export let classPagerCurrent = undefined;
     export let classPagerSpread = undefined;
+    export let classExport = undefined;
 
     // reset offset on search
     const resetOffset = () => {
@@ -61,6 +65,12 @@
         classPagerSpread={classPagerSpread}
     />
 
+    <BenchExport
+        onExport={onExport}
+        columns={columns}
+        classExport={classExport}
+    />
+
 </div>
 
 <style>
@@ -69,9 +79,9 @@
         display: grid;
         width: 100%;
         grid-template-areas:
-            "bench-search bench-search"
+            "bench-search bench-export"
             "bench-table  bench-table"
-            "bench-pager-summary  bench-pager";
+            "bench-summary  bench-pager";
         grid-template-rows: 3em 1fr 3em;
         grid-template-columns: 50% 50%;
     }
