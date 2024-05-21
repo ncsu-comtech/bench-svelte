@@ -85,8 +85,8 @@ To configure the Benc-Svelte table, we need to define what columns are to be use
     let tableColumns = [
         { id: 'id', name: 'ID', hidden: true },
         { id: 'created_at', name: 'Created at', formatter: cell => { return moment(cell).format('MMM Do, H:mm') }},
-        { id: 'name', name: 'Name' },
-        { id: 'title', name: 'Title' },
+        { id: 'name', name: 'Name', onClick: e => { nameAction(e)}}},
+        { id: 'title', name: 'Title', html: true, onClick: e => { alert(e.target.innerText)} },
         { id: 'status', name: 'Status', sort: false }
     ];
 ```
@@ -94,8 +94,10 @@ To configure the Benc-Svelte table, we need to define what columns are to be use
 The key **id** needs to match the column key from the data. <br>
 The key **name** will be what is displayed in the table header for the column. <br>
 The key **hidden** is an optional boolean to hide a specific column from display using css (default: false). <br>
-The key **sort** is an optional boolean to enable/disable sorting (default: true) <br>
-The key **formatter** is an optional function to pass the cell data through for formatting
+The key **sort** is an optional boolean to enable/disable sorting (default: true). <br>
+The key **html** is an optional boolean to allow html in the output (default: false). <br>
+The key **formatter** is an optional function to pass the cell data through for formatting. <br>
+The key **onClick** is an optional event that can be added to a cell. <br>
 
 ## Display
 To include the table, simply include the Bench component
