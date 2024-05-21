@@ -71,11 +71,15 @@ const getTable = async function({url, limit, offset, order, dir, search}) {
 ```
 The data returned for this example would be in the format:
 ```json
-[
-    {"id":1,"name":"Bob","title":"Analyst","status":"At Home"},
-    {"id":2,"name":"Olivia","title":"Manager","status":"On Site"},
-    {"id":3,"name":"Sandra","title":"CTO","status":"On Site"}
-]
+{
+    "recordsTotal": 100,
+    "recordsFiltered": 100,
+    "results": [
+        {"id":1,"name":"Bob","title":"Analyst","status":"At Home"},
+        {"id":2,"name":"Olivia","title":"Manager","status":"On Site"},
+        {"id":3,"name":"Sandra","title":"CTO","status":"On Site"}
+    ]
+}
 ```
 
 ## Configure
