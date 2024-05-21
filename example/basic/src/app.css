@@ -19,9 +19,9 @@ body {
   display: grid;
   width: 100%;
   grid-template-areas:
-      "bench-search bench-search"
+      "bench-search bench-export"
       "bench-table  bench-table"
-      "bench-pager-summary  bench-pager";
+      "bench-summary  bench-pager";
   grid-template-rows: 3em 1fr 3em;
   grid-template-columns: 50% 50%;
 }
@@ -96,7 +96,7 @@ body {
   }
 
   bench-search {
-    .bench-search {
+    .bench-search input {
       background-color: rgba(var(--bs-body-bg-rgb), 1) !important;
       border: 1px solid rgba(var(--bs-secondary-color-rgb), 0.2) !important;
       color: rgba(var(--bs-secondary-color-rgb), 0.3) !important;
@@ -106,9 +106,17 @@ body {
     }
   }
 
-  bench-pager-summary {
+  bench-summary {
     .bench-summary {
       color: rgba(var(--bs-tertiary-color-rgb), 0.5) !important;
+    }
+  }
+
+  bench-export {
+    button {
+      border: 1px solid rgba(var(--bs-secondary-color-rgb), 0.5) !important;
+      background-color: rgba(var(--bs-primary-rgb), 1) !important;
+      color: rgba(var(--bs-body-bg-rgb), 1) !important;
     }
   }
 

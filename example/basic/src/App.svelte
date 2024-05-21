@@ -4,7 +4,7 @@
   import moment from "moment";
   import axios from "axios";
 
-  let tableData, tableLimit=5, tableOffset=0, tableOrder, tableDir, tableSearch;
+  let tableData, tableLimit="5", tableOffset="0", tableOrder, tableDir, tableSearch;
 
   const titleAction = function(e) {
     if (e.target.classList.contains('selected')) {
@@ -16,6 +16,18 @@
     }
   }
 
+  const onExport = async function() {
+      let exportData = await getTable({
+        url: "https://openlibrary.org/search.json",
+        limit: "",
+        offset: "",
+        order: tableOrder,
+        dir: tableDir,
+        search: "subject:beer"+ (tableSearch ? " title:" + tableSearch : '')
+      });
+      return exportData;
+  }
+
   const tableColumns = [
         { id: 'key', name: 'KEY', hidden: true },
         { id: 'author_name', name: 'Author', sort: false, onClick: e => { alert(e.target.innerText)}  },
@@ -24,7 +36,7 @@
         { id: 'number_of_pages_median', name: 'Pages', sort: false }
     ];
 
-  const getTable = async function({url, limit=5, offset=0, order, dir, search}) {
+  const getTable = async function({url, limit="5", offset="0", order, dir, search}) {
     try {
       const paramString = buildQueryParams({
         limit: limit ?? "",
@@ -108,6 +120,8 @@
     bind:offset={tableOffset}
     bind:limit={tableLimit}
     bind:search={tableSearch}
+    onExport={onExport}
+
 />
 <br />
 <hr>
@@ -121,6 +135,7 @@
     bind:limit={tableLimit}
     bind:search={tableSearch}
     classBenchContainer="mybench-container"
+    onExport={onExport}
 />
 
 
