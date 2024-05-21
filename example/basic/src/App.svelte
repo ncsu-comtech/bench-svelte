@@ -6,10 +6,20 @@
 
   let tableData, tableLimit=5, tableOffset=0, tableOrder, tableDir, tableSearch;
 
+  const titleAction = function(e) {
+    if (e.target.classList.contains('selected')) {
+      console.log('Unselect "' + e.target.innerText + '"')
+      e.target.classList.remove('selected');
+    } else {
+      console.log('Select "' + e.target.innerText + '"')
+      e.target.classList.add('selected');
+    }
+  }
+
   const tableColumns = [
         { id: 'key', name: 'KEY', hidden: true },
-        { id: 'author_name', name: 'Author', sort: false },
-        { id: 'title', name: 'Title' },
+        { id: 'author_name', name: 'Author', sort: false, onClick: e => { alert(e.target.innerText)}  },
+        { id: 'title', name: 'Title', html: true, onClick: e => { titleAction(e)} },
         { id: 'publish_date', name: "Published", formatter: cell => { return moment(cell).format('MMM Do, H:mm') }, sort: false},
         { id: 'number_of_pages_median', name: 'Pages', sort: false }
     ];
@@ -86,8 +96,10 @@
   });
 
   $: tableLimit, tableOffset, tableOrder, tableDir, tableSearch, updateTable();
-</script>
 
+
+</script>
+<h3>Basic example:</h3>
 <Bench
     data={tableData}
     columns={tableColumns}
@@ -97,7 +109,27 @@
     bind:limit={tableLimit}
     bind:search={tableSearch}
 />
+<br />
+<hr>
+<h3>Custom css example:</h3>
+<Bench
+    data={tableData}
+    columns={tableColumns}
+    bind:order={tableOrder}
+    bind:dir={tableDir}
+    bind:offset={tableOffset}
+    bind:limit={tableLimit}
+    bind:search={tableSearch}
+    classBenchContainer="mybench-container"
+/>
+
 
 <style>
+
+
+:global(td.selected) {
+  font-weight: bold;
+  background-color: rgba(255, 255, 0, 0.5) !important;
+}
 
 </style>

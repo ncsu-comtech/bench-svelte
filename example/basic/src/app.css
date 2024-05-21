@@ -1,3 +1,7 @@
+/** for custom css basic example **/
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+/** **/
+
 body {
   margin: 0;
   place-items: center;
@@ -9,4 +13,103 @@ body {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+}
+
+.mybench-container {
+  display: grid;
+  width: 100%;
+  grid-template-areas:
+      "bench-search bench-search"
+      "bench-table  bench-table"
+      "bench-pager-summary  bench-pager";
+  grid-template-rows: 3em 1fr 3em;
+  grid-template-columns: 50% 50%;
+}
+
+.mybench-container {
+
+  bench-table {
+    .bench-wrapper {
+      border-color: none !important;
+      box-shadow: none !important;
+    }
+
+    td.bench-td {
+      border: 1px solid rgba(var(--bs-success-rgb), 0.7) !important;
+    }
+
+    .bench-tbody, td.bench-td {
+      background-color: rgba(var(--bs-success-rgb), 0.1) !important;
+    }
+
+    th.bench-th {
+      background-color: rgba(var(--bs-tertiary-color-rgb), 1) !important;
+      color: rgba(var(--bs-body-bg-rgb), 1) !important;
+      border: 1px solid rgba(var(--bs-secondary-color-rgb), 0.5) !important;
+    }
+
+    td.bench-td.selected {
+      background-color: rgba(var(--bs-warning-rgb), 0.5) !important;
+    }
+
+
+
+    th.bench-th span.sortIcon button.unsorted {
+      background-color:  rgba(var(--bs-secondary-bg-rgb), 0.9) !important;
+    }
+
+    th.bench-th span.sortIcon button.sort-asc {
+      background-color:  rgba(var(--bs-secondary-bg-rgb), 0.9) !important;
+    }
+
+    th.bench-th span.sortIcon button.sort-desc * {
+      background-color:  rgba(var(--bs-secondary-bg-rgb), 0.9) !important;
+    }
+
+  }
+
+  bench-pager {
+    .bench-pager button:first-child {
+      border-left: 1px solid rgba(var(--bs-secondary-color-rgb), 0.5) !important;
+      background-color: rgba(var(--bs-primary-rgb), 1) !important;
+      color: rgba(var(--bs-body-bg-rgb), 1) !important;
+    }
+
+    .bench-pager button:last-child {
+      border-right: 1px solid rgba(var(--bs-secondary-color-rgb), 0.5) !important;
+      background-color: rgba(var(--bs-primary-rgb), 1) !important;
+      color: rgba(var(--bs-body-bg-rgb), 1) !important;
+    }
+
+    .bench-pager button.bench-pager-current {
+      background-color: rgba(var(--bs-warning-rgb), 0.4) !important;
+    }
+
+    .bench-pager button.bench-pager-spread {
+      color: rgba(var(--bs-body-color-rgb), 0.3) !important;
+    }
+
+    .bench-pager button {
+      background-color: rgba(var(--bs-body-bg-rgb), 1) !important;
+      border: 1px solid rgba(var(--bs-secondary-color-rgb), 0.5) !important;
+    }
+  }
+
+  bench-search {
+    .bench-search {
+      background-color: rgba(var(--bs-body-bg-rgb), 1) !important;
+      border: 1px solid rgba(var(--bs-secondary-color-rgb), 0.2) !important;
+      color: rgba(var(--bs-secondary-color-rgb), 0.3) !important;
+    }
+    .bench-search::placeholder {
+      color: rgba(var(--bs-secondary-color-rgb), 0.3) !important;
+    }
+  }
+
+  bench-pager-summary {
+    .bench-summary {
+      color: rgba(var(--bs-tertiary-color-rgb), 0.5) !important;
+    }
+  }
+
 }
