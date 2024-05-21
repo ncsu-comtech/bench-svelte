@@ -6,7 +6,7 @@
 </script>
 
 <bench-search>
-    <div class="bench-search-container"><input type="search" placeholder="Type a keyword..." aria-label="Type a keyword..." class={classSearch} bind:value={searchTerm} on:input></div>
+    <div class="{classSearch}"><input type="search" placeholder="Type a keyword..." aria-label="Type a keyword..." bind:value={searchTerm} on:input></div>
 </bench-search>
 
 <style>
@@ -15,7 +15,7 @@
         grid-area: bench-search;
     }
 
-    .bench-search {
+    .bench-search input {
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
