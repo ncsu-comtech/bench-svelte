@@ -95,8 +95,8 @@ To configure the Benc-Svelte table, we need to define what columns are to be use
     ];
 ```
 
-The key **id** needs to match the column key from the data. <br>
-The key **name** will be what is displayed in the table header for the column. <br>
+The key **id** needs to match the column key from the data (required). <br>
+The key **name** will be what is displayed in the table header for the column (required). <br>
 The key **hidden** is an optional boolean to hide a specific column from display using css (default: false). <br>
 The key **sort** is an optional boolean to enable/disable sorting (default: true). <br>
 The key **html** is an optional boolean to allow html in the output (default: false). <br>
@@ -116,6 +116,30 @@ To include the table, simply include the Bench component
     bind:search={tableSearch}
 />
 ```
+
+The **data** prop is a required variable of the entire dataset.<br>
+The **columns** prop is a required variable of the column setup.<br>
+The **order** prop is a string value of *asc* or *desc*.<br>
+The **offset** prop is where in the overall dataset the data will start.<br>
+The **limit** prop is how many records will be returned.<br>
+The **search** prop is a search string variable.<br>
+
+## Export
+The export CSV button will appear when the prop **onExport** is set to reference an async function that will return the same data formated for the table, but without using offset or limit so all of the data is exported.
+
+```javascript
+<Bench
+    data={tableData}
+    columns={tableColumns}
+    bind:order={tableOrder}
+    bind:dir={tableDir}
+    bind:offset={tableOffset}
+    bind:limit={tableLimit}
+    bind:search={tableSearch}
+    onExport={(type) => myExportFn(type)}
+/>
+```
+The export function has one argument of the type of export, for example "csv", that can be used to have different data sent back depending on the type.
 
 # Styling
 

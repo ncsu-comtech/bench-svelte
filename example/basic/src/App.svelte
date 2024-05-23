@@ -16,25 +16,26 @@
     }
   }
 
-  const onExport = async function() {
-      let exportData = await getTable({
-        url: "https://openlibrary.org/search.json",
-        limit: "",
-        offset: "",
-        order: tableOrder,
-        dir: tableDir,
-        search: "subject:beer"+ (tableSearch ? " title:" + tableSearch : '')
-      });
-      return exportData;
+  const onExport = async function(type) {
+    console.log('getting data for export type "' +type+ '"');
+    let exportData = await getTable({
+      url: "https://openlibrary.org/search.json",
+      limit: "",
+      offset: "",
+      order: tableOrder,
+      dir: tableDir,
+      search: "subject:beer"+ (tableSearch ? " title:" + tableSearch : '')
+    });
+    return exportData;
   }
 
   const tableColumns = [
-        { id: 'key', name: 'KEY', hidden: true },
-        { id: 'author_name', name: 'Author', sort: false, onClick: e => { alert(e.target.innerText)}  },
-        { id: 'title', name: 'Title', html: true, onClick: e => { titleAction(e)} },
-        { id: 'publish_date', name: "Published", formatter: cell => { return moment(cell).format('MMM Do, H:mm') }, sort: false},
-        { id: 'number_of_pages_median', name: 'Pages', sort: false }
-    ];
+    { id: 'key', name: 'KEY', hidden: true },
+    { id: 'author_name', name: 'Author', sort: false, onClick: e => { alert(e.target.innerText)}  },
+    { id: 'title', name: 'Title', html: true, onClick: e => { titleAction(e)} },
+    { id: 'publish_date', name: "Published", formatter: cell => { return moment(cell).format('MMM Do, H:mm') }, sort: false},
+    { id: 'number_of_pages_median', name: 'Pages', sort: false }
+  ];
 
   const getTable = async function({url, limit="5", offset="0", order, dir, search}) {
     try {
@@ -120,7 +121,7 @@
     bind:offset={tableOffset}
     bind:limit={tableLimit}
     bind:search={tableSearch}
-    onExport={onExport}
+    onExport={(type) => onExport(type)}
 
 />
 <br />
@@ -135,7 +136,6 @@
     bind:limit={tableLimit}
     bind:search={tableSearch}
     classBenchContainer="mybench-container"
-    onExport={onExport}
 />
 
 
