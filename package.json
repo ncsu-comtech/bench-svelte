@@ -1,6 +1,6 @@
 {
   "name": "@haught/bench-svelte",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A simple table package for Svelte using remote data",
   "main": "src/index.js",
   "scripts": {
