@@ -132,7 +132,7 @@
         border: 1px solid #e5e7eb;
         box-sizing: content-box;
         padding: 0.5rem 0.5rem;
-        overflow: scroll;
+        overflow: auto;
     }
 
     .bench-tbody, td.bench-td {
