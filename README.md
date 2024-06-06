@@ -10,7 +10,7 @@ This project will only support dynamic data for pages and supports:
 ## Install
 
 ```sh
-npm install @haught/bench-svelte
+npm install @ncsu-comtech/bench-svelte
 ```
 
 # Usage

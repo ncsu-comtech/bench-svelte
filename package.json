@@ -1,6 +1,6 @@
 {
-  "name": "@haught/bench-svelte",
-  "version": "1.0.5",
+  "name": "@ncsu-comtech/bench-svelte",
+  "version": "1.0.6",
   "description": "A simple table package for Svelte using remote data",
   "main": "src/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/haught/bench-svelte"
+    "url": "https://github.com/ncsu-comtech/bench-svelte"
   },
   "keywords": [
     "table",
@@ -27,9 +27,9 @@
   "author": "Matt Haught",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/haught/bench-svelte/issues"
+    "url": "https://github.com/ncsu-comtech/bench-svelte/issues"
   },
-  "homepage": "https://github.com/haught/bench-svelte#readme",
+  "homepage": "https://github.com/ncsu-comtech/bench-svelte#readme",
   "exports": {
     ".": {
       "svelte": "./src/index.js"
